@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot Password</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f3f1f4, #f5f7fb);
+      font-family: 'Arial', sans-serif;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      width: 380px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .form-container h2 {
+      font-size: 22px;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 25px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      background: #f9f9f9;
+      box-sizing: border-box;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 12px 15px;
+      margin-top: 15px;
+      background-color: #2575fc;
+      color: #ffffff;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .form-container p {
+      font-size: 12px;
+      color: #666666;
+      margin-top: 15px;
+    }
+
+    .form-container p a {
+      color: #2575fc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Forgot Password</h2>
+    <form id="forgot-password-form">
+      <input type="email" id="forgot-email" placeholder="Enter your email" required>
+      <button type="submit">Send Reset Link</button>
+    </form>
+    <p><a href="login form.html">Back to login</a></p>
+  </div>
+
+  <script>
+    document.getElementById('forgot-password-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('forgot-email').value;
+
+      // Check if the email exists in localStorage
+      const userData = JSON.parse(localStorage.getItem(email));
+      
+      if (userData) {
+        alert("A password reset link has been sent to your email.");
+        window.location.href = "reset.html"; // Redirect to reset password page
+      } else {
+        alert("This email is not registered.");
+      }
+    });
+  </script>
+
+</body>
+</html>
