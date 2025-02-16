@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f3f1f4, #f5f7fb);
+      font-family: 'Arial', sans-serif;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      width: 380px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .form-container h2 {
+      font-size: 22px;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 25px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      background: #f9f9f9;
+      box-sizing: border-box;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 12px 15px;
+      margin-top: 15px;
+      background-color: #2575fc;
+      color: #ffffff;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .form-container p {
+      font-size: 12px;
+      color: #666666;
+      margin-top: 15px;
+    }
+
+    .form-container p a {
+      color: #2575fc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Login</h2>
+    <form id="login-form">
+      <input type="email" id="login-email" placeholder="Email" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    <p><a href="forget.html">Forgot password?</a></p>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+
+      // Retrieve stored user data from localStorage
+      const userData = JSON.parse(localStorage.getItem(email));
+
+      if (userData && userData.password === password) {
+        alert("Welcome to TrendVerse ");
+        window.location.href = "index.html"; // Redirect to a home/dashboard page
+      } else {
+        alert("Invalid credentials! Please try again.");
+      }
+    });
+  </script>
+
+</body>
+</html>
